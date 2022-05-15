@@ -36,9 +36,9 @@ sudo apt insteall docker.io
       - `sudo docker exec -it es01 /bin/bash`
          - now in the container terminal:
            - `cd bin`
-           - `elasticsearch-reset-password -u elastic`
+           - `elasticsearch-reset-password -i -u elastic`
             > set passworda according to local requirements
-            - `eleasticsearch-generate-token -s kibana
+            - `eleasticsearch-create-enrollmenttken -s kibana
             > copy token base64 text and save it for kiban enrollement
             - `exit`
     - Start kibana container
