@@ -18,3 +18,35 @@ https://rufus.ie/en/
 sudo apt insteall docker.io
 ```
 5. Install Docker-Compose.
+
+6. Install vscode
+`sudo snap install --classic code`
+
+
+
+7. Setup Elastic Nodes
+  - `cd /opt`
+  -   Set vm max `sudo sysctl -w vm.max_map_count=262144`
+  - `sudo docker network create elastic`
+  - `sudo docker pull docker.elastic.co/elasticsearch/elasticsearch:8.2.0`
+  - `sudo docker pull docker.elastic.co/kibana/kibana:8.2.0`
+  - ` sudo docker run --name es01 --net elastic -p 9200:9200 -it docker.elastic.co/elasticsearch/elasticsearch:8.2.0`
+  - In the out put you need to find two items.
+    - Password for the "elastic" user:
+    - Token for enrollment: 
+
+
+
+## Suricata
+sudo add-apt-repository ppa:oisf/suricata-stable
+sudo apt update
+sudo apt install -y suricata
+
+## Zeek
+sudo sudo apt-get -y install cmake make gcc g++ flex bison libpcap-dev libssl-dev python3 python3-dev swig zlib1g-dev
+sudo git clone --recursive https://github.com/zeek/zeek
+sudo chmod -R 755 zeek
+sudo chown -R mdtoperator:mdtoperator zeek
+cd zeek
+./configure && make && sudo make install
+
