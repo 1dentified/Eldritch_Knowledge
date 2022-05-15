@@ -53,6 +53,8 @@ sudo apt insteall docker.io
 sudo add-apt-repository ppa:oisf/suricata-stable
 sudo apt update
 sudo apt install -y suricata
+- Update suricata
+  
 
 ## Zeek
 sudo sudo apt-get -y install cmake make gcc g++ flex bison libpcap-dev libssl-dev python3 python3-dev swig zlib1g-dev
@@ -63,5 +65,8 @@ cd zeek
 ./configure && make && sudo make install
 
  ## Filebeat
-
- ## Install 
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.2.0-amd64.deb
+sudo dpkg -i filebeat-oss-8.2.0-amd64.deb
+  
+  
+ ## Wireshark
