@@ -32,10 +32,22 @@ sudo apt insteall docker.io
   - `sudo docker pull docker.elastic.co/kibana/kibana:8.2.0`
   - ` sudo docker run --name es01 --net elastic -p 9200:9200 -it docker.elastic.co/elasticsearch/elasticsearch:8.2.0`
   - In the out put you need to find two items.
-    - Password for the "elastic" user:
-    - Token for enrollment: 
-
-
+    - Set elastic Password
+      - `sudo docker exec -it es01 /bin/bash`
+         - now in the container terminal:
+           - `cd bin`
+           - `elasticsearch-reset-password -u elastic`
+            > set passworda according to local requirements
+            - `eleasticsearch-generate-token -s kibana
+            > copy token base64 text and save it for kiban enrollement
+            - `exit`
+    - Start kibana container
+    `docker run --name kibana --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.2.0`
+    - Wait fro the generated link and ctrl+click or copy the link int the browser.
+    - Click connect to elasticsearh.
+    - Copy enrollment token and click connect.
+    - Login with elastic:<pw>
+    - DONE! Wait...not yet...go set dark mode.
 
 ## Suricata
 sudo add-apt-repository ppa:oisf/suricata-stable
@@ -50,3 +62,6 @@ sudo chown -R mdtoperator:mdtoperator zeek
 cd zeek
 ./configure && make && sudo make install
 
+ ## Filebeat
+
+ ## Install 
