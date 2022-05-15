@@ -74,6 +74,11 @@ Line 137: change to hosts: ["https://0.0.0.0:9200"]
 Line 144 Uncomment and update username: "elastic"
 Line 145: Uncomment and update password "P@55w0rd!"
   
+  Save chages
+  
+  Start filebeat setup:
+`sudo filebeat setup -e`
+ sudo filebeat modules enable zeek 
 
   
   
