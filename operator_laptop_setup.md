@@ -42,7 +42,7 @@ sudo apt insteall docker.io
             > copy token base64 text and save it for kiban enrollement
             - `exit`
     - Start kibana container
-    `docker run --name kibana -d --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.2.0`
+    `sudo docker run --name kibana -d --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.2.0`
     - Wait fro the generated link and ctrl+click or copy the link int the browser.
     - Click connect to elasticsearh.
     - Copy enrollment token and click connect.
@@ -71,3 +71,6 @@ sudo dpkg -i filebeat-oss-8.2.0-amd64.deb
   
  ## Wireshark
 sudo apt install wireshark
+
+ ## Powershell
+ sudo snap install --classic powershell
