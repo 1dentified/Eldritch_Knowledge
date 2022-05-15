@@ -15,7 +15,7 @@ https://rufus.ie/en/
 
 4. Install Docker.io
 ```
-sudo apt insteall docker.io
+sudo apt install docker.io
 ```
 5. Install Docker-Compose.
 
