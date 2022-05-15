@@ -30,7 +30,7 @@ sudo apt insteall docker.io
   - `sudo docker network create elastic`
   - `sudo docker pull docker.elastic.co/elasticsearch/elasticsearch:8.2.0`
   - `sudo docker pull docker.elastic.co/kibana/kibana:8.2.0`
-  - ` sudo docker run --name es01 --net elastic -p 9200:9200 -it docker.elastic.co/elasticsearch/elasticsearch:8.2.0`
+  - ` sudo docker run -d --name es01 --net elastic -p 9200:9200 -it docker.elastic.co/elasticsearch/elasticsearch:8.2.0`
   - In the out put you need to find two items.
     - Set elastic Password
       - `sudo docker exec -it es01 /bin/bash`
@@ -42,7 +42,7 @@ sudo apt insteall docker.io
             > copy token base64 text and save it for kiban enrollement
             - `exit`
     - Start kibana container
-    `docker run --name kibana --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.2.0`
+    `docker run --name kibana -d --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.2.0`
     - Wait fro the generated link and ctrl+click or copy the link int the browser.
     - Click connect to elasticsearh.
     - Copy enrollment token and click connect.
@@ -70,3 +70,4 @@ sudo dpkg -i filebeat-oss-8.2.0-amd64.deb
   
   
  ## Wireshark
+sudo apt install wireshark
