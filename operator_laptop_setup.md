@@ -65,8 +65,16 @@ cd zeek
 ./configure && make && sudo make install
 
  ## Filebeat
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.2.0-amd64.deb
+sudo curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.2.0-amd64.deb
 sudo dpkg -i filebeat-oss-8.2.0-amd64.deb
+sudo nano /etc/filebeat/filebeat.yml
+Uncomment and change:
+Line 110: Uncommment and update to host: "http://0.0.0.0:5601"
+Line 137: change to hosts: ["https://0.0.0.0:9200"]
+Line 144 Uncomment and update username: "elastic"
+Line 145: Uncomment and update password "P@55w0rd!"
+  
+
   
   
  ## Wireshark
