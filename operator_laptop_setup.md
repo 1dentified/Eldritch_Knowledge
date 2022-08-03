@@ -22,11 +22,9 @@ sudo apt install docker.io
 6. Install vscode
 `sudo snap install --classic code`
 
-
-
 7. Setup Elastic Nodes
   - `cd /opt`
-  -   Set vm max `sudo sysctl -w vm.max_map_count=262144`
+  -  Set vm max `sudo sysctl -w vm.max_map_count=262144`
   - `sudo docker network create elastic`
   - `sudo docker pull docker.elastic.co/elasticsearch/elasticsearch:8.2.0`
   - `sudo docker pull docker.elastic.co/kibana/kibana:8.2.0`
@@ -36,54 +34,62 @@ sudo apt install docker.io
       - `sudo docker exec -it es01 /bin/bash`
          - now in the container terminal:
            - `cd bin`
-           - `elasticsearch-reset-password -i -u elastic`
-            > set passworda according to local requirements
-            - `eleasticsearch-create-enrollmenttken -s kibana
-            > copy token base64 text and save it for kiban enrollement
-            - `exit`
+           - `elasticsearch-reset-password -i -u elastic` (set passworda according to local requirements)            
+            - `eleasticsearch-create-enrollmenttken -s kibana (copy token base64 text and save it for kiban enrollement)`
+            - exit
     - Start kibana container
     `sudo docker run --name kibana -d --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.2.0`
-    - Wait fro the generated link and ctrl+click or copy the link int the browser.
+    - Wait for the generated link and ctrl+click or copy the link int the browser.
     - Click connect to elasticsearh.
     - Copy enrollment token and click connect.
-    - Login with elastic:<pw>
+    - Login with elastic: [pw]
     - DONE! Wait...not yet...go set dark mode.
 
 ## Suricata
+```bash
 sudo add-apt-repository ppa:oisf/suricata-stable
 sudo apt update
 sudo apt install -y suricata
+```
 - Update suricata
   
 
 ## Zeek
+```bash
 sudo sudo apt-get -y install cmake make gcc g++ flex bison libpcap-dev libssl-dev python3 python3-dev swig zlib1g-dev
 sudo git clone --recursive https://github.com/zeek/zeek
 sudo chmod -R 755 zeek
 sudo chown -R mdtoperator:mdtoperator zeek
 cd zeek
 ./configure && make && sudo make install
+```
 
- ## Filebeat
+## Filebeat
+```bash
 sudo curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.2.0-amd64.deb
 sudo dpkg -i filebeat-oss-8.2.0-amd64.deb
 sudo nano /etc/filebeat/filebeat.yml
+```
+
 Uncomment and change:
 Line 110: Uncommment and update to host: "http://0.0.0.0:5601"
 Line 137: change to hosts: ["https://0.0.0.0:9200"]
-Line 144 Uncomment and update username: "elastic"
-Line 145: Uncomment and update password "P@55w0rd!"
+Line 144 Uncomment and update username: `elastic`
+Line 145: Uncomment and update password `P@55w0rd!`
   
-  Save chages
+ Save chages
   
-  Start filebeat setup:
+Start filebeat setup:
 `sudo filebeat setup -e`
- sudo filebeat modules enable zeek 
+sudo filebeat modules enable zeek 
 
   
-  
- ## Wireshark
+## Wireshark
+```
 sudo apt install wireshark
+```
 
- ## Powershell
- sudo snap install --classic powershell
+## Powershell
+```
+sudo snap install --classic powershell
+```
