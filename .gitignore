@@ -1,2 +1,3 @@
-# ignore Obsidian files
-.obsidian/
+# ignore hidden directories and files
+.*
+!/.gitignore
