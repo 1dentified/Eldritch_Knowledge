@@ -51,6 +51,9 @@ sudo vim /etc/sysctl.conf
 
 # Set VM max - add the following line:
 vm.max_map_count=262144
+
+# Reload configuration
+sudo sysctl -p
 ```
 
 2. Setup Docker and pull down the containers
