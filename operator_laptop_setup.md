@@ -22,7 +22,7 @@ sudo apt update && sudo apt upgrade
 
 2. APT
 ```
-sudo apt -y install docker.io wireshark tmux vim curl
+sudo apt -y install docker.io wireshark tmux vim curl net-tools
 ```
 
 3. Snap
