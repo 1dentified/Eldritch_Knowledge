@@ -111,7 +111,7 @@ TODO: Install Emerging Threats Ruleset Instructions
 
 ## Zeek
 ```bash
-sudo sudo apt-get -y install cmake make gcc g++ flex bison libpcap-dev libssl-dev python3 python3-dev swig zlib1g-dev
+sudo apt -y install cmake make gcc g++ flex bison libpcap-dev libssl-dev python3 python3-dev swig zlib1g-dev
 sudo git clone --recursive https://github.com/zeek/zeek
 sudo chmod -R 755 zeek
 sudo chown -R mdtoperator:mdtoperator zeek
