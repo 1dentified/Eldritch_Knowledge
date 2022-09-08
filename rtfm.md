@@ -1,8 +1,12 @@
 # RTFM
 
 ## Desktop
+> Quick action icons and folders!
 
-## Populating Zeek Folder
-
-## Populating Suricata Folder
-
+- **Sample_Data**
+  - incident_pcap.pcap
+ 
+## Zeek Output Folder
+>  
+## Suricata Output Folder
+>
