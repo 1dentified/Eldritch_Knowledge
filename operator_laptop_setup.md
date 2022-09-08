@@ -71,7 +71,7 @@ sudo docker exec -it es01 /bin/bash
 # now in the container terminal
 cd bin
 elasticsearch-reset-password -i -u elastic   # Set passwords according to local requirements
-eleasticsearch-create-enrollmentkey -s kibana   # Copy token base64 text and save it for kibana enrollement
+elasticsearch-create-enrollment-token -s kibana   # Copy token base64 text and save it for kibana enrollement
 exit
 ```
 
