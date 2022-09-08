@@ -82,15 +82,22 @@ Important! Make sure you take not of the password and enrollment key!
 sudo docker run --name kibana -d --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.2.0
 ```
 
-6. Wait for the generated link and ctrl+click or copy the link int the browser.
+6. Navigate to: `localhost:5601`
 
-7. Click connect to Elasticsearh.
+7. Paste in the base64 enrollment token you got from step 4.
 
-8. Copy enrollment token and click connect.
+8. If required, log into the kibana container and obtain a verification code
+```
+sudo docker exec -it kibana /bin/bash
+
+# In the container:
+kibana-verification-code
+exit
+```
 
 9. Login with: `elastic:[pw]`
 
-10. DONE! Wait...not yet...go set dark mode. (Kibana -> Advanced Settings)
+10. DONE! Wait...not yet...go set dark mode! (Stack Management -> Kibana -> Advanced Settings)
 
 
 ## Suricata
