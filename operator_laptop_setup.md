@@ -15,27 +15,21 @@ https://rufus.ie/en/
 
 ## Install Core Packages
 
-1. Docker.io
+1. APT
 ```
-sudo apt install docker.io
+sudo apt -y install docker.io wireshark 
 ```
-2. Docker-Compose.
+
+2. Snap
+```
+sudo snap install --classic code
+sudo snap install --classic powershell
+```
+
+3. Docker-Compose.
 ```
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
-```
-
-3. VScode
-`sudo snap install --classic code`
-
-4. Wireshark
-```
-sudo apt install wireshark
-```
-
-5. Powershell
-```
-sudo snap install --classic powershell
 ```
 
 ## Elastic (Elasticsearch and Kibana)
