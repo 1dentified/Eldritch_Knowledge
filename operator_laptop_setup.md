@@ -22,7 +22,7 @@ sudo apt update && sudo apt upgrade
 
 2. APT
 ```
-sudo apt -y install docker.io wireshark tmux vim curl net-tools
+sudo apt -y install docker.io wireshark tmux vim curl net-tools docker-compose
 ```
 
 3. Snap
@@ -31,13 +31,7 @@ sudo snap install --classic code
 sudo snap install --classic powershell
 ```
 
-4. Docker-Compose
-```
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-```
-
-5. Clone this repo
+4. Clone this repo
 ```
 cd ~
 sudo git clone https://github.com/1dentified/Eldritch_Knowledge.git
