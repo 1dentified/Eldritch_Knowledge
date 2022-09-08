@@ -44,16 +44,18 @@ sudo git clone https://github.com/1dentified/Eldritch_Knowledge.git
 
 ## Elastic (Elasticsearch and Kibana)
 
-1. Configure settings
+1. Configure mem settings
 ```
-cd /opt
+sudo vim /etc/sysctl.conf
 
-# Set VM max
-sudo sysctl -w vm.max_map_count=262144
+# Set VM max - add the following line:
+vm.max_map_count=262144
 ```
 
 2. Setup Docker and pull down the containers
 ```
+cd /opt/
+
 sudo docker network create elastic
 sudo docker pull docker.elastic.co/elasticsearch/elasticsearch:8.2.0
 sudo docker pull docker.elastic.co/kibana/kibana:8.2.0
