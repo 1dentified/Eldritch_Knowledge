@@ -39,6 +39,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 5. Clone this repo
 ```
+cd ~
 sudo git clone https://github.com/1dentified/Eldritch_Knowledge.git
 ```
 
