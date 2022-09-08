@@ -22,7 +22,7 @@ sudo apt update && sudo apt upgrade
 
 2. APT
 ```
-sudo apt -y install docker.io wireshark tmux vim curl net-tools docker-compose
+sudo apt -y install docker.io wireshark tmux vim curl net-tools docker-compose python3-pip
 ```
 
 3. Snap
@@ -71,7 +71,7 @@ sudo docker exec -it es01 /bin/bash
 # now in the container terminal
 cd bin
 elasticsearch-reset-password -i -u elastic   # Set passwords according to local requirements
-eleasticsearch-create-enrollmentkey -s kibana   # Copy token base64 text and save it for kibana enrollement
+elasticsearch-create-enrollment-token -s kibana   # Copy token base64 text and save it for kibana enrollement
 exit
 ```
 
@@ -82,15 +82,22 @@ Important! Make sure you take not of the password and enrollment key!
 sudo docker run --name kibana -d --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.2.0
 ```
 
-6. Wait for the generated link and ctrl+click or copy the link int the browser.
+6. Navigate to: `localhost:5601`
 
-7. Click connect to Elasticsearh.
+7. Paste in the base64 enrollment token you got from step 4.
 
-8. Copy enrollment token and click connect.
+8. If required, log into the kibana container and obtain a verification code
+```
+sudo docker exec -it kibana /bin/bash
+
+# In the container:
+kibana-verification-code
+exit
+```
 
 9. Login with: `elastic:[pw]`
 
-10. DONE! Wait...not yet...go set dark mode. (Kibana -> Advanced Settings)
+10. DONE! Wait...not yet...go set dark mode! (Stack Management -> Kibana -> Advanced Settings)
 
 
 ## Suricata
@@ -104,7 +111,7 @@ TODO: Install Emerging Threats Ruleset Instructions
 
 ## Zeek
 ```bash
-sudo sudo apt-get -y install cmake make gcc g++ flex bison libpcap-dev libssl-dev python3 python3-dev swig zlib1g-dev
+sudo apt -y install cmake make gcc g++ flex bison libpcap-dev libssl-dev python3 python3-dev swig zlib1g-dev
 sudo git clone --recursive https://github.com/zeek/zeek
 sudo chmod -R 755 zeek
 sudo chown -R mdtoperator:mdtoperator zeek
