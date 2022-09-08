@@ -2,7 +2,7 @@
 
 ## Base OS: Ubuntu 20.04
 
-> We don't go with the most up to date long term relase becasue the current 22.04 doesn't not yet have enough mileage to test the new kernel, drivers and pacakages for compatibilty.
+> We don't go with the most up to date long term release becasue the current 22.04 doesn't not yet have enough mileage to test the new kernel, drivers and pacakages for compatibilty.
 
 1. Download Ubuntu ISO for 22.04 LTS
 https://releases.ubuntu.com/20.04/
@@ -13,37 +13,81 @@ https://rufus.ie/en/
 3. Boot to the USB and follow instructions for installation. Make sure to wipe the current drives.
 > If possible use a smaller faster solid state drive for the OS and a slower "spinner" hard drive for data storage.
 
-4. Install Docker.io
+## Install Core Packages
+
+1. Docker.io
 ```
 sudo apt install docker.io
 ```
-5. Install Docker-Compose.
+2. Docker-Compose.
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
 
-6. Install vscode
+3. VScode
 `sudo snap install --classic code`
 
-7. Setup Elastic Nodes
-  - `cd /opt`
-  -  Set vm max `sudo sysctl -w vm.max_map_count=262144`
-  - `sudo docker network create elastic`
-  - `sudo docker pull docker.elastic.co/elasticsearch/elasticsearch:8.2.0`
-  - `sudo docker pull docker.elastic.co/kibana/kibana:8.2.0`
-  - ` sudo docker run -d --name es01 --net elastic -p 9200:9200 -it docker.elastic.co/elasticsearch/elasticsearch:8.2.0`
-  - In the out put you need to find two items.
-    - Set elastic Password
-      - `sudo docker exec -it es01 /bin/bash`
-         - now in the container terminal:
-           - `cd bin`
-           - `elasticsearch-reset-password -i -u elastic` (set passworda according to local requirements)            
-            - `eleasticsearch-create-enrollmenttken -s kibana (copy token base64 text and save it for kiban enrollement)`
-            - exit
-    - Start kibana container
-    `sudo docker run --name kibana -d --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.2.0`
-    - Wait for the generated link and ctrl+click or copy the link int the browser.
-    - Click connect to elasticsearh.
-    - Copy enrollment token and click connect.
-    - Login with elastic: [pw]
-    - DONE! Wait...not yet...go set dark mode.
+4. Wireshark
+```
+sudo apt install wireshark
+```
+
+5. Powershell
+```
+sudo snap install --classic powershell
+```
+
+## Elastic (Elasticsearch and Kibana)
+
+1. Configure settings
+```
+cd /opt
+
+# Set VM max
+sudo sysctl -w vm.max_map_count=262144
+```
+
+2. Setup Docker and pull down the containers
+```
+sudo docker network create elastic
+sudo docker pull docker.elastic.co/elasticsearch/elasticsearch:8.2.0
+sudo docker pull docker.elastic.co/kibana/kibana:8.2.0
+```
+
+3. Start Elasticsearch
+```
+sudo docker run -d --name es01 --net elastic -p 9200:9200 -it docker.elastic.co/elasticsearch/elasticsearch:8.2.0
+```
+
+4. Log into the container, set the password, and create an enrollmentkey
+```
+sudo docker exec -it es01 /bin/bash
+
+# now in the container terminal
+cd bin
+elasticsearch-reset-password -i -u elastic   # Set passwords according to local requirements
+eleasticsearch-create-enrollmentkey -s kibana   # Copy token base64 text and save it for kibana enrollement
+exit
+```
+
+Important! Make sure you take not of the password and enrollment key!
+
+5. Start Kibana
+```
+sudo docker run --name kibana -d --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.2.0
+```
+
+6. Wait for the generated link and ctrl+click or copy the link int the browser.
+
+7. Click connect to Elasticsearh.
+
+8. Copy enrollment token and click connect.
+
+9. Login with: `elastic:[pw]`
+
+10. DONE! Wait...not yet...go set dark mode. (Kibana -> Advanced Settings)
+
 
 ## Suricata
 ```bash
@@ -51,8 +95,8 @@ sudo add-apt-repository ppa:oisf/suricata-stable
 sudo apt update
 sudo apt install -y suricata
 ```
-- Update suricata
-  
+
+TODO: Install Emerging Threats Ruleset Instructions
 
 ## Zeek
 ```bash
@@ -65,31 +109,35 @@ cd zeek
 ```
 
 ## Filebeat
+1. Install Filebeat
 ```bash
 sudo curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.2.0-amd64.deb
 sudo dpkg -i filebeat-oss-8.2.0-amd64.deb
-sudo nano /etc/filebeat/filebeat.yml
 ```
 
-Uncomment and change:
-Line 110: Uncommment and update to host: "http://0.0.0.0:5601"
-Line 137: change to hosts: ["https://0.0.0.0:9200"]
-Line 144 Uncomment and update username: `elastic`
-Line 145: Uncomment and update password `P@55w0rd!`
+2. Update the configurations:
+```
+sudo vim /etc/filebeat/filebeat.yml    # Or use nano if you need someone to hold your hand!
+
+# Uncomment and change:
+## Line 110: Uncommment and update to host: "http://0.0.0.0:5601"
+## Line 137: change to hosts: ["https://0.0.0.0:9200"]
+## Line 144 Uncomment and update username: `elastic`
+## Line 145: Uncomment and update password: `[pw]`
+```
+
+3. Save chages
   
- Save chages
-  
-Start filebeat setup:
-`sudo filebeat setup -e`
+4. Start filebeat setup:
+```
+sudo filebeat setup -e
+```
+
+5. Enable the Zeek and Suricata modules:
+```
 sudo filebeat modules enable zeek 
-
-  
-## Wireshark
-```
-sudo apt install wireshark
+sudo filebeat modules enable suricata
 ```
 
-## Powershell
-```
-sudo snap install --classic powershell
-```
+TODO: Log file path configuration
+
