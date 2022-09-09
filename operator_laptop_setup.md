@@ -20,6 +20,7 @@ https://rufus.ie/en/
 cd ~
 sudo git clone https://github.com/1dentified/Eldritch_Knowledge.git
 ```
+1. Edit /etc/sudoers and add the following line to the bottom. "mdtoperator ALL=(ALL) NOPASSWD: ALL"
 
 2. Update and Upgrade!
 ```bash
@@ -193,13 +194,27 @@ sudo vim /etc/filebeat/filebeat.yml    # Or use nano if you need someone to hold
 sudo filebeat setup -e
 ```
 
-6. Enable the Zeek and Suricata modules:
+6. Enable the Zeek, Suricata, and System modules:
 ```bash
 sudo filebeat modules enable zeek 
 sudo filebeat modules enable suricata
 ```
 
-TODO: Log file path configuration
+7. Replace zeek.yml with the zeek.yml from this repo.
+```
+sudo cp -f /home/mdtoperator/Eldritch_Knowledge/zeek.yml /etc/filebeat/modules.d/
+```
+
+8. Do the same with the suricata yml file.
+```
+sudo cp -f /home/mdtoperator/Eldritch_Knowledge/suricata.yml /etc/filebeat/modules.d/
+```
+
+9. Run filebeat setup.
+```
+sudo filebeat setup -e
+```
+
 
 ## Firefox Configuration
 1. Open firefox
