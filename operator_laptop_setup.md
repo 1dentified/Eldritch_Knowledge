@@ -207,5 +207,5 @@ TODO: Log file path configuration
 3. Scroll down and choose "Dark Theme" or I will judge you.
 4. On the left, choose Home.
 5. Change the drop down from firefox Default to Custom Urls...
-6. Copy the following location into the url field: file:///home/mdtoperator/Eldritch_Knowledge/necronomicron.html
+6. Copy the following location into the url field: file:///home/mdtoperator/Eldritch_Knowledge/necronomicon.html
 7. There is no save, simply open a new tab and click the home button in the top left to test!
