@@ -119,6 +119,9 @@ mqtt:
 # Line 769
 rdp:
   enabled: yes
+# Line 949
+modbus:
+  enabled: yes
 # Line 980
 sip:
   enabled: yes
@@ -167,7 +170,7 @@ echo "HEX:CODE" | sed s/://g
 # Copy the output - you'll need this for the next step!
 ```
 
-2. Update the configurations:
+3. Update the configurations:
 ```bash
 sudo vim /etc/filebeat/filebeat.yml    # Or use nano if you need someone to hold your hand!
 
@@ -183,14 +186,14 @@ sudo vim /etc/filebeat/filebeat.yml    # Or use nano if you need someone to hold
     ca_trusted_fingerprint: "[HEXCODE]"
 ```
 
-3. Save changes
+4. Save changes
   
-4. Start filebeat setup:
+5. Start filebeat setup:
 ```bash
 sudo filebeat setup -e
 ```
 
-5. Enable the Zeek and Suricata modules:
+6. Enable the Zeek and Suricata modules:
 ```bash
 sudo filebeat modules enable zeek 
 sudo filebeat modules enable suricata
