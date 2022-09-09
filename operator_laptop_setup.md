@@ -15,27 +15,28 @@ https://rufus.ie/en/
 
 ## Install Core Packages
 
-1. Update and Upgrade!
+1. Clone this repo
+```
+cd ~
+sudo git clone https://github.com/1dentified/Eldritch_Knowledge.git
+```
+
+2. Update and Upgrade!
 ```
 sudo apt update && sudo apt upgrade
 ```
 
-2. APT
+3. APT
 ```
-sudo apt -y install docker.io wireshark tmux vim curl net-tools docker-compose python3-pip
+sudo apt -y install docker.io docker-compose wireshark tmux vim curl net-tools python3-pip
 ```
 
-3. Snap
+4. Snap
 ```
 sudo snap install --classic code
 sudo snap install --classic powershell
 ```
 
-4. Clone this repo
-```
-cd ~
-sudo git clone https://github.com/1dentified/Eldritch_Knowledge.git
-```
 
 ## Elastic (Elasticsearch and Kibana)
 
