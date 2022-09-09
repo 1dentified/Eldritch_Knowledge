@@ -102,13 +102,41 @@ exit
 
 
 ## Suricata
+1. Install Suricata
 ```bash
 sudo add-apt-repository ppa:oisf/suricata-stable
 sudo apt update
 sudo apt install -y suricata
 ```
 
-TODO: Install Emerging Threats Ruleset Instructions
+2. Update the config file
+```bash
+sudo vim /etc/suricata/suricata.yaml
+
+# Line 730
+mqtt:
+  enabled: yes  
+# Line 769
+rdp:
+  enabled: yes
+# Line 980
+sip:
+  enabled: yes
+```
+
+3. Enable and Update signatures (ruleset)
+```bash
+sudo suricata-update enable-source et/open
+sudo suricata-update enable-source oisf/trafficid
+sudo suricata-update enable-source sslbl/ssl-fp-blacklist
+sudo suricata-update enable-source sslbl/ja3-fingerprints
+sudo suricata-update enable-source etnetera/aggressive
+sudo suricata-update enable-source tgreen/hunting
+sudo suricata-update enable-source malsilo/win-malware
+
+sudo suricata-update
+```
+
 
 ## Zeek
 ```bash
