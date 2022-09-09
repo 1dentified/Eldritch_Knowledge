@@ -127,6 +127,18 @@ sudo curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8
 sudo dpkg -i filebeat-oss-8.2.0-amd64.deb
 ```
 
+2. Generate an Elasticsearch SSL Fingerprint
+```bash
+sudo docker exec -it es01 openssl x509 -fingerprint -sha256 -in config/certs/http_ca.crt
+
+# Copy the hex output after "SHA256 Fingerprint="
+
+# You need to get rid of the ":" characters
+echo "HEX:CODE" | sed s/://g
+
+# Copy the output - you'll need this for the next step!
+```
+
 2. Update the configurations:
 ```
 sudo vim /etc/filebeat/filebeat.yml    # Or use nano if you need someone to hold your hand!
@@ -134,11 +146,17 @@ sudo vim /etc/filebeat/filebeat.yml    # Or use nano if you need someone to hold
 # Uncomment and change:
 ## Line 110: Uncommment and update to host: "http://0.0.0.0:5601"
 ## Line 137: change to hosts: ["https://0.0.0.0:9200"]
-## Line 144 Uncomment and update username: `elastic`
+
+## Starting on Line 144 (Spacing is super important!):  Uncomment and update username: `elastic`
 ## Line 145: Uncomment and update password: `[pw]`
+  username: "elastic"
+  password: "[pw]"
+  ssl:
+    enabled: true
+    ca_trusted_fingerprint: "[HEXCODE]"
 ```
 
-3. Save chages
+3. Save changes
   
 4. Start filebeat setup:
 ```
