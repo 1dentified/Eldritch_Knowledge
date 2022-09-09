@@ -29,7 +29,7 @@ sudo apt update && sudo apt upgrade
 
 3. APT
 ```bash
-sudo apt -y install docker.io docker-compose wireshark tmux vim curl net-tools python3-pip
+sudo apt -y install docker.io docker-compose wireshark tmux vim curl net-tools python3-pip jq
 ```
 
 4. Snap
@@ -222,5 +222,5 @@ sudo filebeat setup -e
 3. Scroll down and choose "Dark Theme" or I will judge you.
 4. On the left, choose Home.
 5. Change the drop down from firefox Default to Custom Urls...
-6. Copy the following location into the url field: file:///home/mdtoperator/Eldritch_Knowledge/necronomicron.html
+6. Copy the following location into the url field: file:///home/mdtoperator/Eldritch_Knowledge/necronomicon.html
 7. There is no save, simply open a new tab and click the home button in the top left to test!
