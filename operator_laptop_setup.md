@@ -16,23 +16,23 @@ https://rufus.ie/en/
 ## Install Core Packages
 
 1. Clone this repo
-```
+```bash
 cd ~
 sudo git clone https://github.com/1dentified/Eldritch_Knowledge.git
 ```
 
 2. Update and Upgrade!
-```
+```bash
 sudo apt update && sudo apt upgrade
 ```
 
 3. APT
-```
+```bash
 sudo apt -y install docker.io docker-compose wireshark tmux vim curl net-tools python3-pip
 ```
 
 4. Snap
-```
+```bash
 sudo snap install --classic code
 sudo snap install --classic powershell
 ```
@@ -41,7 +41,7 @@ sudo snap install --classic powershell
 ## Elastic (Elasticsearch and Kibana)
 
 1. Configure mem settings
-```
+```bash
 sudo vim /etc/sysctl.conf
 
 # Set VM max - add the following line:
@@ -52,7 +52,7 @@ sudo sysctl -p
 ```
 
 2. Setup Docker and pull down the containers
-```
+```bash
 cd /opt/
 
 sudo docker network create elastic
@@ -61,12 +61,12 @@ sudo docker pull docker.elastic.co/kibana/kibana:8.2.0
 ```
 
 3. Start Elasticsearch
-```
+```bash
 sudo docker run -d --name es01 --net elastic -p 9200:9200 -it docker.elastic.co/elasticsearch/elasticsearch:8.2.0
 ```
 
 4. Log into the container, set the password, and create an enrollmentkey
-```
+```bash
 sudo docker exec -it es01 /bin/bash
 
 # now in the container terminal
@@ -79,7 +79,7 @@ exit
 Important! Make sure you take not of the password and enrollment key!
 
 5. Start Kibana
-```
+```bash
 sudo docker run --name kibana -d --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.2.0
 ```
 
@@ -88,7 +88,7 @@ sudo docker run --name kibana -d --net elastic -p 5601:5601 docker.elastic.co/ki
 7. Paste in the base64 enrollment token you got from step 4.
 
 8. If required, log into the kibana container and obtain a verification code
-```
+```bash
 sudo docker exec -it kibana /bin/bash
 
 # In the container:
@@ -140,15 +140,14 @@ echo "HEX:CODE" | sed s/://g
 ```
 
 2. Update the configurations:
-```
+```bash
 sudo vim /etc/filebeat/filebeat.yml    # Or use nano if you need someone to hold your hand!
 
 # Uncomment and change:
 ## Line 110: Uncommment and update to host: "http://0.0.0.0:5601"
 ## Line 137: change to hosts: ["https://0.0.0.0:9200"]
 
-## Starting on Line 144 (Spacing is super important!):  Uncomment and update username: `elastic`
-## Line 145: Uncomment and update password: `[pw]`
+## Starting on Line 144 (Spacing is super important!)
   username: "elastic"
   password: "[pw]"
   ssl:
@@ -159,12 +158,12 @@ sudo vim /etc/filebeat/filebeat.yml    # Or use nano if you need someone to hold
 3. Save changes
   
 4. Start filebeat setup:
-```
+```bash
 sudo filebeat setup -e
 ```
 
 5. Enable the Zeek and Suricata modules:
-```
+```bash
 sudo filebeat modules enable zeek 
 sudo filebeat modules enable suricata
 ```
