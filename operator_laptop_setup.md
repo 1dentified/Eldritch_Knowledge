@@ -28,7 +28,7 @@ sudo apt update && sudo apt upgrade
 
 3. APT
 ```bash
-sudo apt -y install docker.io docker-compose wireshark tmux vim curl net-tools python3-pip
+sudo apt -y install docker.io docker-compose wireshark tmux vim curl net-tools python3-pip jq
 ```
 
 4. Snap
