@@ -15,7 +15,10 @@ https://rufus.ie/en/
 
 ## Install Core Packages
 
-1. Edit /etc/sudoers and add the following line to the bottom. "mdtoperator ALL=(ALL) NOPASSWD: ALL"
+1. Edit /etc/sudoers and add the following line to the bottom: 
+```bash
+mdtoperator ALL=(ALL) NOPASSWD: ALL
+```
 
 2. Update and Upgrade!
 ```bash
