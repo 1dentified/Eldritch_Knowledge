@@ -15,8 +15,11 @@ https://rufus.ie/en/
 
 ## Install Core Packages
 
-1. Edit /etc/sudoers and add the following line to the bottom: 
+1. Edit /etc/sudoers to not require having to input a password every time: 
 ```bash
+sudo nano /etc/sudoers
+
+# Add the following line to the bottom:
 mdtoperator ALL=(ALL) NOPASSWD: ALL
 ```
 
