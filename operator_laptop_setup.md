@@ -15,11 +15,6 @@ https://rufus.ie/en/
 
 ## Install Core Packages
 
-1. Clone this repo
-```bash
-cd ~
-sudo git clone https://github.com/1dentified/Eldritch_Knowledge.git
-```
 1. Edit /etc/sudoers and add the following line to the bottom. "mdtoperator ALL=(ALL) NOPASSWD: ALL"
 
 2. Update and Upgrade!
@@ -38,6 +33,11 @@ sudo snap install --classic code
 sudo snap install --classic powershell
 ```
 
+5. Clone this repo
+```bash
+cd ~
+sudo git clone https://github.com/1dentified/Eldritch_Knowledge.git
+```
 
 ## Elastic (Elasticsearch and Kibana)
 
