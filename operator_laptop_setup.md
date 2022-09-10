@@ -7,7 +7,7 @@
 1. Download Ubuntu ISO for 22.04 LTS
 https://releases.ubuntu.com/20.04/
 
-2. User Rufus to create a bootable USB with the ISO.
+2. Use Rufus to create a bootable USB with the ISO.
 https://rufus.ie/en/
 
 3. Boot to the USB and follow instructions for installation. Make sure to wipe the current drives.
