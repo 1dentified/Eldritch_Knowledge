@@ -162,7 +162,7 @@ cd zeek
 1. Install Filebeat
 ```bash
 sudo curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.2.0-amd64.deb
-sudo dpkg -i filebeat-oss-8.2.0-amd64.deb
+sudo dpkg -i filebeat-8.2.0-amd64.deb
 ```
 
 2. Generate an Elasticsearch SSL Fingerprint
