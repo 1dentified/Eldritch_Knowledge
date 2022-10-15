@@ -72,6 +72,9 @@ sudo docker pull docker.elastic.co/kibana/kibana:8.2.0
 sudo docker run -d --name es01 --net elastic -p 9200:9200 -it docker.elastic.co/elasticsearch/elasticsearch:8.2.0
 ```
 
+> NOTE:  This is important. If you shutdown your computer, the containers you are running will no longer be running and the rest of these steps can fail.
+> Check the output of the follow command `sudo docker ps -a` to see if the containers are "up" or actively running. If not use the following command to stat them (don't use run again, it will make duplicates). `sudo docker start es01` or `sudo docker start kibana`.
+
 4. Log into the container, set the password, and create an enrollmentkey
 ```bash
 sudo docker exec -it es01 /bin/bash
