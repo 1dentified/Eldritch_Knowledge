@@ -163,6 +163,8 @@ echo "export PATH:/usr/local/zeek/bin:$PATH"
 ```
 > Restart the console and test the binary by running `zeek --version`
 
+
+
 ## Filebeat
 1. Install Filebeat
 ```bash
