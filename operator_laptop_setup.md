@@ -159,7 +159,9 @@ sudo chmod -R 755 zeek
 sudo chown -R mdtoperator:mdtoperator zeek
 cd zeek
 ./configure && make && sudo make install
+echo "export PATH:/usr/local/zeek/bin:$PATH"
 ```
+> Restart the console and test the binary by running `zeek --version`
 
 ## Filebeat
 1. Install Filebeat
