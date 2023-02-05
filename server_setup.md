@@ -26,6 +26,15 @@ sudo dd bs=4M if=[location/to/iso/file] of=[partition without the number] conv=f
 
 # Example
 sudo dd bs=4M if=/home/mdtoperator/securityonion.iso of=/dev/sdb conv=fdatasync
+```
 
 ## RAID Configuration
-```
+1. To enter into the RAID controller, on boot press `CTRL` + `r`
+
+2. Delete the current RAID configuration (if necessary)
+Press `F2`, "Erase VD" -> "Simple"
+- Note: This can take approximately 30-40 minutes
+
+3. Create a new VD
+For the Operating System with two physical disks, use RAID 1
+For the Operating System with more than two physical disks, use RAID 10
